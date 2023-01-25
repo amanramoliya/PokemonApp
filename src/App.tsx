@@ -1,25 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import PokemonContainer from "./components/PokemonContainer";
+// import { pokemons } from "./Pokemon";
+import { useState, useEffect } from "react";
+import { fetchpokemons } from "./components/Http";
+import { Pokemon } from "./Pokemon";
+import { Link } from "react-router-dom";
 
 function App() {
+  // const [index, setIndex] = useState(0);
+
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+  // const showDetails = (id: number) => {
+  //   setIndex(id);
+  // };
+
+  const fetchpokemonsawai = async () => {
+    try {
+      const result = await fetchpokemons();
+      setPokemons(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchpokemonsawai();
+
+    // fetchpokemons()
+    //   .then((data) => {
+    //     setPokemons(data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="row row-col-3">
+        {pokemons.length > 0 ? (
+          pokemons.map((pokemon, index_) => {
+            return (
+              // <PokemonContainer
+              //   key={index_}
+              //   pokemon={pokemon}
+              //   handleclick={() => showDetails(pokemon.id - 1)}
+              // ></PokemonContainer>
+
+              // <div className="container">
+              <PokemonContainer
+                key={index_}
+                pokemon={pokemon}
+              ></PokemonContainer>
+            );
+          })
+        ) : (
+          <div>Loading...</div>
+        )}
+        <Link to="/about">About Us</Link>
+      </div>
+    </>
   );
 }
 
