@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "details/:nameOrid",
-        element: <PokemonDetails2></PokemonDetails2>,
+        element: <PokemonDetails></PokemonDetails>,
         // errorElement: <ErrorPage />,
       },
       {

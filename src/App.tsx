@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      <div className="row row-col-3">
+      <div className="row row-col-3 row-col-lg-5 row-col-md-2 ">
         {pokemons.length > 0 ? (
           pokemons.map((pokemon, index_) => {
             return (
@@ -55,7 +55,9 @@ function App() {
             );
           })
         ) : (
-          <div>Loading...</div>
+          <div className="spinner-border text-info" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         )}
         <Link to="/about">About Us</Link>
       </div>

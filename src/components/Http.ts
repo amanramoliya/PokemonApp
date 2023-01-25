@@ -27,7 +27,7 @@ export const fetchpokemons = async (): Promise<Pokemon[]> => {
       name: pokemon.name,
       height: 0,
       weight: 0,
-      types: [],
+      types: ["t1", "t2"],
     };
   });
   return pokemons;
@@ -37,4 +37,22 @@ export const fetchpokemons = async (): Promise<Pokemon[]> => {
   //     // reject({ msg: "there is no pokemons" });
   //   }, 500);
   // });
+};
+
+export const fetchpokemon = async (
+  nameOrId: string | undefined
+): Promise<Pokemon> => {
+  const { data } = await axios.get(
+    "https://pokeapi.co/api/v2/pokemon/" + nameOrId
+  );
+
+  return {
+    id: data.id,
+    name: data.name,
+    height: data.height,
+    weight: data.weight,
+    types: data.types.map((type: any) => {
+      return type.type.name;
+    }),
+  };
 };

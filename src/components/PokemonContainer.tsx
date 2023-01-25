@@ -14,7 +14,7 @@ const PokemonContainer = (props: PokemonContainersInterface) => {
         className=" card text-center"
         style={{
           // height: "18rem",
-          width: "18rem",
+          width: "16rem",
           // margin: "10px",
         }}
         // onClick={() => props.handleclick()}
@@ -22,14 +22,15 @@ const PokemonContainer = (props: PokemonContainersInterface) => {
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
           // className="card-img-top"
+          height="140px"
           alt="..."
         />
         <div className="card-body">
-          <Link to="/details" state={pokemon}>
-            {pokemon.name}
-          </Link>
-          <br />
           <Link to={`/details/${pokemon.name}`}>NameOrId</Link>
+          <br />
+          <button className="btn btn-info">
+            <Link to={`/details/${pokemon.id}`}>{pokemon.name}</Link>
+          </button>
           {/* {pokemon.power && <p className="card-text">power: {pokemon.power}</p>} */}
         </div>
       </div>
