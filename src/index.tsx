@@ -1,15 +1,17 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./index.css";
 // import PokemonContainer from "./components/PokemonContainer";
-import PokemonDetails from "./components/pokemonDetails";
-import ErrorPage from "./components/ErrorPage";
 import AboutUs from "./components/AboutUs";
-import PokemonDetails2 from "./components/PokemonDetails2";
+import ErrorPage from "./components/ErrorPage";
+import HomePage from "./components/HomePage";
+import PokemonDetails from "./components/pokemonDetails";
+import RouterComponent from "./components/RouterComponent";
 
+// RequestInterceptor();
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -18,6 +20,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage></ErrorPage>,
+    element: (
+      <RouterComponent>
+        <HomePage></HomePage>
+      </RouterComponent>
+    ),
     children: [
       {
         path: "",

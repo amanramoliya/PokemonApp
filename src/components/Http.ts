@@ -16,28 +16,25 @@ import { Pokemon } from "../Pokemon";
 //   },
 // ];
 
-export const fetchpokemons = async (): Promise<Pokemon[]> => {
-  const { data } = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon/?limit=20"
-  );
+// export const fetchpokemons = async (): Promise<Pokemon[]> => {
 
-  const pokemons = data.results.map((pokemon: any, index: number) => {
-    return {
-      id: index + 1,
-      name: pokemon.name,
-      height: 0,
-      weight: 0,
-      types: ["t1", "t2"],
-    };
-  });
-  return pokemons;
-  // return new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     resolve(pokemons);
-  //     // reject({ msg: "there is no pokemons" });
-  //   }, 500);
-  // });
-};
+//   // const pokemons = data.results.map((pokemon: any, index: number) => {
+//   //   return {
+//   //     id: index + 1,
+//   //     name: pokemon.name,
+//   //     height: 0,
+//   //     weight: 0,
+//   //     types: ["t1", "t2"],
+//   //   };
+//   // });
+//   // return pokemons;
+//   // return new Promise((resolve, reject) => {
+//   //   setTimeout(() => {
+//   //     resolve(pokemons);
+//   //     // reject({ msg: "there is no pokemons" });
+//   //   }, 500);
+//   // });
+// };
 
 export const fetchpokemon = async (
   nameOrId: string | undefined

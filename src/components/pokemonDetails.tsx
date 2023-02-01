@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Pokemon } from "../Pokemon";
 import { fetchpokemon } from "./Http";
 
-// import { Pokemon } from "../Pokemon";
-
-// interface PokemonDetailsInterface {
-//   pokemon: Pokemon;
-// }
-
 const PokemonDetails = () => {
+  const navigator = useNavigate();
+
+  function goback() {
+    navigator(-1);
+  }
+
   const [pokemon, setPokemon] = useState<Pokemon>();
   const { nameOrid } = useParams();
   const fetchpok = async () => {
@@ -40,6 +40,9 @@ const PokemonDetails = () => {
             return <span className="badge bg-info text-dark">{ptype}</span>;
           })}
         </div>
+        <button className="btn btn-secondary" onClick={goback}>
+          Go Back
+        </button>
       </div>
     </>
   );
