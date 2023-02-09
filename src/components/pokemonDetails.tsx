@@ -36,8 +36,12 @@ const PokemonDetails = () => {
         <p>Height: {pokemon?.height}</p>
         <div>
           Types:
-          {pokemon?.types.map((ptype: string) => {
-            return <span className="badge bg-info text-dark">{ptype}</span>;
+          {pokemon?.types.map((ptype: string, index: number) => {
+            return (
+              <span key={index} className="badge bg-info text-dark">
+                {ptype}
+              </span>
+            );
           })}
         </div>
         <button className="btn btn-secondary" onClick={goback}>
